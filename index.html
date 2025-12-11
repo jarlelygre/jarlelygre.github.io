@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jarle Lygre Consulting – Export & Sanction Precheck</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Fast and practical export & sanction precheck services for technical spare parts, maritime suppliers and industrial companies."
+  />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-light: #111827;
+      --card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #f97373;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.4);
+      --max-width: 1000px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 50%, #000 100%);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px 48px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: var(--max-width);
+      background: linear-gradient(145deg, #020617 0%, #020617 55%, #0b1220 100%);
+      border-radius: 32px;
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      box-shadow: var(--shadow-soft);
+      padding: 28px 20px 32px;
+    }
+
+    @media (min-width: 900px) {
+      .wrapper {
+        padding: 32px 36px 40px;
+      }
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      padding-bottom: 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      width: fit-content;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
+    }
+
+    .top-row {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 720px) {
+      .top-row {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    }
+
+    .title-block h1 {
+      font-size: 26px;
+      letter-spacing: 0.02em;
+    }
+
+    @media (min-width: 720px) {
+      .title-block h1 {
+        font-size: 30px;
+      }
+    }
+
+    .title-block h1 span {
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 480px;
+      margin-top: 4px;
+    }
+
+    .contact-block {
+      font-size: 13px;
+      color: var(--muted);
+      background: radial-gradient(circle at top left, #020617, #020617, #020617);
+      border-radius: var(--radius-lg);
+      padding: 10px 12px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-block-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+
+    .contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .contact-line span {
+      white-space: nowrap;
+    }
+
+    .contact-link {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (min-width: 900px) {
+      main {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        gap: 20px;
+        align-items: flex-start;
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #020617, #020617, #020617);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      padding: 18px 16px 18px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (min-width: 720px) {
+      .card {
+        padding: 20px 18px 22px;
+      }
+    }
+
+    .card + .card {
+      margin-top: 0;
+    }
+
+    .card-title {
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+
+    .card-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: #9ca3af;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .pill-accent {
+      border-color: rgba(56, 189, 248, 0.7);
+      background: var(--accent-soft);
+      color: #e0f2fe;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 8px;
+      display: grid;
+      gap: 4px;
+      font-size: 13px;
+      color: #d1d5db;
+    }
+
+    ul li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 6px;
+    }
+
+    .price-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .price-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 8px 10px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      font-size: 13px;
+    }
+
+    .price-name {
+      font-weight: 500;
+    }
+
+    .price-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .price-value {
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--accent);
+      margin-left: 8px;
+      white-space: nowrap;
+    }
+
+    .price-badge {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #bae6fd;
+      margin-left: 6px;
+    }
+
+    .how-it-works {
+      margin-top: 10px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.35);
+      padding-top: 10px;
+    }
+
+    .how-it-works h3 {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .steps {
+      font-size: 12px;
+      color: var(--muted);
+      display: grid;
+      gap: 3px;
+    }
+
+    .steps span {
+      display: block;
+    }
+
+    .tagline {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .tagline strong {
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 22px;
+      font-size: 11px;
+      color: #6b7280;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .risk-hint {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 6px;
+    }
+
+    .risk-hint span {
+      color: var(--danger);
+      font-weight: 500;
+    }
+
+    .cta-box {
+      margin-top: 10px;
+      padding: 9px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .cta-box strong {
+      color: #e5e7eb;
+    }
+
+    .cta-box a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .cta-box a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="wrapper">
+      <header>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>Export & Sanction Precheck for Technical Spare Parts</span>
+        </div>
+
+        <div class="top-row">
+          <div class="title-block">
+            <h1>
+              Jarle Lygre Consulting<br />
+              <span>Export &amp; Sanction Precheck</span>
+            </h1>
+            <p class="subtitle">
+              Fast, practical export &amp; sanction checks for SMEs in the
+              technical, maritime and industrial sector. Clear answers in plain
+              language – not legal jargon.
+            </p>
+          </div>
+
+          <div class="contact-block">
+            <div class="contact-block-title">Contact</div>
+            <div class="contact-line">
+              <span><strong>Consultant:</strong> Jarle Lygre</span>
+            </div>
+            <div class="contact-line">
+              <span>
+                <strong>Email:</strong>
+                <a class="contact-link" href="mailto:jarle.lygre@icloud.com">
+                  jarle.lygre@icloud.com
+                </a>
+              </span>
+              <span><strong>Phone:</strong> +47 916 01 196</span>
+            </div>
+            <div class="contact-line">
+              <span><strong>Location:</strong> Norway</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <!-- Left column: Service description -->
+        <section class="card">
+          <h2 class="card-title">What I do</h2>
+          <p class="card-subtitle">
+            I help small and mid-sized companies handle export checks for
+            technical spare parts – before the shipment is blocked.
+          </p>
+
+          <div class="pill-row">
+            <span class="pill pill-accent">SME focused</span>
+            <span class="pill">Technical &amp; maritime spare parts</span>
+            <span class="pill">DHL / K+N issues</span>
+            <span class="pill">Plain-language reports</span>
+          </div>
+
+          <ul>
+            <li>Country and flag risk (e.g. Russia, Belarus, Iran)</li>
+            <li>Basic dual-use assessment</li>
+            <li>Sanction exposure and grey-zone cases</li>
+            <li>EORI-related questions (Norway–EU–third countries)</li>
+            <li>HS code sanity check (basic level)</li>
+            <li>Checks for vessels with “risk flags”</li>
+            <li>Clarifications when DHL / K+N / UPS stop a shipment</li>
+          </ul>
+
+          <div class="how-it-works">
+            <h3>How it works</h3>
+            <div class="steps">
+              <span>1. You send: product description, HS code (if any), sender → receiver → end-user, country/flag.</span>
+              <span>2. I review export &amp; sanction risk and required documentation.</span>
+              <span>3. You receive a short written conclusion + recommended text for the freight forwarder.</span>
+            </div>
+          </div>
+
+          <p class="tagline">
+            Ideal for <strong>technical workshops</strong>, <strong>maritime suppliers</strong> and <strong>industrial SMEs</strong> without an in-house compliance team.
+          </p>
+          <p class="risk-hint">
+            <span>Note:</span> I provide practical export &amp; sanction prechecks. This is not formal legal advice.
+          </p>
+        </section>
+
+        <!-- Right column: Pricing & call-to-action -->
+        <section class="card">
+          <h2 class="card-title">Pricing</h2>
+          <p class="card-subtitle">
+            Fixed prices in NOK – simple and predictable. Invoices can be issued
+            to Norwegian or foreign companies.
+          </p>
+
+          <div class="price-grid">
+            <div class="price-item">
+              <div>
+                <div class="price-name">Basic Assessment</div>
+                <div class="price-note">Simple shipment or one concrete question. Response within 24–48 hours.</div>
+              </div>
+              <div>
+                <span class="price-value">NOK 990</span>
+              </div>
+            </div>
+
+            <div class="price-item">
+              <div>
+                <div class="price-name">Full Export Precheck</div>
+                <div class="price-note">
+                  Comprehensive risk review: country, flag, sanction exposure,
+                  dual-use (basic), documentation and forwarder text.
+                </div>
+              </div>
+              <div>
+                <span class="price-value">NOK 1,990</span>
+                <span class="price-badge">Most used</span>
+              </div>
+            </div>
+
+            <div class="price-item">
+              <div>
+                <div class="price-name">Urgent Case</div>
+                <div class="price-note">For blocked shipments where you need a clarification within 1 hour.</div>
+              </div>
+              <div>
+                <span class="price-value">NOK 2,490</span>
+              </div>
+            </div>
+
+            <div class="price-item">
+              <div>
+                <div class="price-name">Monthly Subscription</div>
+                <div class="price-note">
+                  For companies with regular export. Includes 2 prechecks per
+                  month, priority handling and standard templates.
+                </div>
+              </div>
+              <div>
+                <span class="price-value">NOK 399 / month</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-box">
+            <strong>Interested?</strong><br />
+            Send a short email with your case description to
+            <a href="mailto:jarle.lygre@icloud.com">jarle.lygre@icloud.com</a>
+            and I will confirm price and estimated response time before we start.
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>© <span id="year"></span> Jarle Lygre Consulting – Export &amp; Sanction Precheck</span>
+        <span>Based in Norway – supporting clients across Europe and beyond.</span>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // Simple script to always show current year in the footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
